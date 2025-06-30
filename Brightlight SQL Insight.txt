@@ -1,0 +1,48 @@
+SELECT 
+    unit_price,
+    product_category,
+    product_type,
+    product_detail,
+    store_location,
+    DATE_PART(MONTH,transaction_date) AS sales_month,
+    SUM(transaction_qty) AS total_units_sold,
+    SUM(transaction_qty * unit_price) AS total_sales_value,
+    AVG(unit_price) AS avg_unit_price,
+    COUNT(DISTINCT transaction_id) AS transaction_count,
+    SUM(transaction_qty * unit_price) / COUNT(DISTINCT transaction_id) AS avg_basket_size,
+
+    -- Fast vs Slow Movers
+    CASE 
+        WHEN SUM(transaction_qty) > 100 THEN 'Fast Mover'
+        WHEN SUM(transaction_qty) BETWEEN 10 AND 100 THEN 'Medium Mover'
+        ELSE 'Slow Mover'
+    END AS product_movement_category,
+
+    -- Peak Hour
+    HOUR(transaction_time) AS sale_hour,
+
+    -- Store Performance Tier
+    CASE 
+        WHEN SUM(transaction_qty * unit_price) > 10000 THEN 'High Performing'
+        WHEN SUM(transaction_qty * unit_price) BETWEEN 5000 AND 10000 THEN 'Moderate Performing'
+        ELSE 'Low Performing'
+    END AS store_performance_tier
+
+FROM 
+    coffe.shop.coffeeshopsales
+
+-- Optional WHERE clause to filter by date/category/store
+-- WHERE t.transaction_date >= '2023-01-01' AND t.transaction_date <= '2024-12-31'
+
+GROUP BY 
+    unit_price,
+    sales_month,
+    product_category,
+    product_type,
+    product_detail,
+    store_location,
+    sale_hour
+
+ORDER BY 
+    sales_month,
+    total_sales_value DESC;

@@ -1,0 +1,23 @@
+ÿUnderstand customer buying habits,,,,
+,,,,
+Sum of AVG_BASKET_SIZE,Column Labels,,,
+Row Labels,Astoria,Hell's Kitchen,Lower Manhattan,Grand Total
+6,29.75%,35.49%,34.76%,100.00%
+5,30.33%,34.91%,34.75%,100.00%
+4,30.58%,34.87%,34.55%,100.00%
+3,30.51%,34.36%,35.13%,100.00%
+1,30.68%,35.23%,34.09%,100.00%
+2,30.25%,34.70%,35.06%,100.00%
+Grand Total,30.33%,34.95%,34.72%,100.00%
+,,,,
+,,,,
+,,,,
+,,,,
+Row Labels,Sum of AVG_BASKET_SIZE,Sum of TOTAL_UNITS_SOLD,Sum of TRANSACTION_COUNT,
+6,18.93%,50942,35352,
+5,18.18%,48233,33527,
+4,16.73%,36469,25335,
+3,15.80%,30406,21229,
+1,15.54%,24870,17314,
+2,14.82%,23550,16359,
+Grand Total,100.00%,214470,149116,
